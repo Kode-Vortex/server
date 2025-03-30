@@ -27,8 +27,8 @@ ConnectToDataBase()
 
 
 app.use(cors({
-    // origin: "http://kodevortex.in",
-    origin: "http://localhost:5173",
+    origin: "http://kodevortex.in",
+    // origin: "http://localhost:5173",
     credentials: true
 }))
 
