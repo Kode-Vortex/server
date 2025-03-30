@@ -6,6 +6,9 @@ import dotenv from "dotenv"
 dotenv.config()
 
 
+export const checkserver = async (req, res) => {
+  res.send("workking...")
+}
 
 export const RegisterUser = async (req, res) => {
   try {
