@@ -25,6 +25,9 @@ ConnectToDataBase()
 
 
 
+app.get("/", (req, res) => {
+    res.send("Hello, Vercel!");
+  });
 
 
 app.use(cors({

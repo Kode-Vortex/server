@@ -5,13 +5,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv"
 dotenv.config()
 
-export const checkserver = async (req,res) => {
-  try{
-    return res.send("Server is Working... ")
-  }catch(error){
-    return
-  }
-}
+
 
 export const RegisterUser = async (req, res) => {
   try {
