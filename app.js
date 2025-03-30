@@ -25,10 +25,6 @@ ConnectToDataBase()
 
 
 
-app.get("/", (req, res) => {
-    res.send("Hello, Vercelcnjcndjcndcnjdncjkd");
-  });
-
 
 app.use(cors({
     // origin: "http://kodevortex.in",
