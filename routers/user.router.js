@@ -23,7 +23,7 @@ const generateBothTokens = async (userid) => {
   }
 };
 
-router.route("/" , async (req,res) => {
+router.get("/" , async (req,res) => {
     res.send("Hello Harsh!!!")
 })
 router.post("/register" , async (req,res)=>{
