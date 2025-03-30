@@ -31,7 +31,8 @@ app.get("/", (req, res) => {
 
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://kodevortex.in",
+    // origin: "http://localhost:5173",
     credentials: true
 }))
 
