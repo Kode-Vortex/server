@@ -127,7 +127,7 @@ router.get("/get-user" , authenticate  ,async (req,res)=>{
 })
 router.get("/logout", authenticate, async (req, res) => {
   try {
-    await User.findByIdAndUpdate(req.user._id, { $unset: { refreshToken: 1 } });
+    await User.findByIdAndUpdate(req.user._id);
 
     const options = {
       httpOnly: true,
