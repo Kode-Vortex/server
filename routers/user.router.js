@@ -116,7 +116,6 @@ router.post("/login", async (req, res) => {
 router.get("/get-user" , authenticate  ,async (req,res)=>{
     try {
 
-      console.log("xekjv bnm");
       
       
         const user = req.user;
@@ -135,7 +134,8 @@ router.get("/logout" , authenticate , async (req,res) => {
       );
       const options = {
         httpOnly: true,
-        secure: true,
+        secure: true, // Secure only in production
+        sameSite: "None", // Required for cross-domain cookies
       };
     
       return res
@@ -154,7 +154,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const oauth2client = new google.auth.OAuth2(
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  "http://localhost:5173" // Ensure this matches your Google OAuth redirect URI
+  "https://www.kodevortex.in" // Ensure this matches your Google OAuth redirect URI
 );
 
 
