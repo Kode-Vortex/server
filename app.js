@@ -28,9 +28,9 @@ app.use(cors({
     
     origin: ["http://localhost:5173" , "http://kodevortex.in"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"], 
 }))
-app.options("*", cors());
 
 // config of diff types of data  acceptance
 app.use(express.json())

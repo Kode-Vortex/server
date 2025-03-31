@@ -3,7 +3,12 @@ import User from "../models/user.model.js";
 export const authenticate = async (req, res , next) => {
     try{
         
+        console.log("djwhdwoijm");
+        
         const {accessToken} = req.cookies;
+
+        console.log("accesstoken" , accessToken);
+        
 
         
 
