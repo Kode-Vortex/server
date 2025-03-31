@@ -33,10 +33,10 @@ app.use(cors({
 }))
 
 // config of diff types of data  acceptance
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true , limit:"30kb"}))
 app.use(bodyParser.json())
-app.use(cookieParser())
 
 
 app.use("/" , userRouter)

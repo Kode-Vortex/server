@@ -28,7 +28,6 @@ router.get("/" , async (req,res) => {
 })
 router.post("/register" , async (req,res)=>{
 
-  console.log("erlnfrnj");
   
      try {
         const { fullname, email, phone_no, password, message } = req.body;
@@ -94,9 +93,8 @@ router.post("/login", async (req, res) => {
     // Set cookie options correctly
     const cookieOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Secure only in production
+      secure: true, // Secure only in production
       sameSite: "None", // Required for cross-domain cookies
-      path: "/",
     };
 
     return res
@@ -115,8 +113,11 @@ router.post("/login", async (req, res) => {
 });
 
 
-router.get("/get-user"  , async (req,res)=>{
+router.get("/get-user" , authenticate  ,async (req,res)=>{
     try {
+
+      console.log("xekjv bnm");
+      
       
         const user = req.user;
     
