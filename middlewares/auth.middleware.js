@@ -3,13 +3,10 @@ import User from "../models/user.model.js";
 export const authenticate = async (req, res , next) => {
     try{
         
-        console.log("Headers:", req.headers);  // Debug headers
-        console.log("Cookies:", req.cookies);  // Debug cookie
-
+        
         
         const {accessToken} = req.cookies;
 
-        console.log("accesstoken" , accessToken);
         
 
         
