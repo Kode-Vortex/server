@@ -25,10 +25,12 @@ ConnectToDataBase()
 
 
 app.use(cors({
-    origin: "http://kodevortex.in",
-    // origin: "http://localhost:5173",
+    // origin: "http://kodevortex.in",
+    origin: "http://localhost:5173",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true
 }))
+app.options("*", cors());
 
 // config of diff types of data  acceptance
 app.use(express.json())

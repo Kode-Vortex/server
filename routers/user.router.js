@@ -27,6 +27,9 @@ router.get("/" , async (req,res) => {
     res.send("Hello Harsh!!!")
 })
 router.post("/register" , async (req,res)=>{
+
+  console.log("erlnfrnj");
+  
      try {
         const { fullname, email, phone_no, password, message } = req.body;
     
@@ -67,6 +70,8 @@ router.post("/register" , async (req,res)=>{
 router.post("/login" , async (req,res)=>{
      try {
         const { email, password } = req.body;
+    
+
         if (!email || !password) {
           return res.status(201).json({ message: "All fields are required!!!" });
         }
