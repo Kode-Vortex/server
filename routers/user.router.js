@@ -129,19 +129,13 @@ router.get("/logout", authenticate, async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.user._id);
 
-    const options = {
-      httpOnly: true,
-      // secure: process.env.NODE_ENV === "production",
-      sameSite: "None",
-    };
-
-    res.cookie("accessToken", "", { expires: new Date(0), ...options });
-    res.cookie("refreshToken", "", { expires: new Date(0), ...options });
+   
+    
 
     return res
       .status(200)
-      .clearCookie("accessToken", options)
-      .clearCookie("refreshToken", options)
+      .clearCookie("accessToken")
+      .clearCookie("refreshToken")
       .json({ message: "User logged out successfully" });
   } catch (error) {
     return res.status(500).json({ message: "Internal Server Error" });
