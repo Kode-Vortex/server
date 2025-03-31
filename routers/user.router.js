@@ -125,24 +125,28 @@ router.get("/get-user" , authenticate  ,async (req,res)=>{
         return res.status(400).json({ message: "Internal Server Error" });
       }
 })
+router.get("/logout", authenticate, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.user._id, { $unset: { refreshToken: 1 } });
 
-router.get("/logout" , authenticate , async (req,res) => {
-      await User.findByIdAndUpdate(
-        req.user._id,
-       
-      );
-      const options = {
-        httpOnly: true,
-        secure: true, // Secure only in production
-        sameSite: "None", // Required for cross-domain cookies
-      };
-    
-      return res
-        .status(200)
-        .clearCookie("accessToken", options)
-        .clearCookie("refreshToken", options)
-        .json({ message: "User logged Out" });
-})
+    const options = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+    };
+
+    res.cookie("accessToken", "", { expires: new Date(0), ...options });
+    res.cookie("refreshToken", "", { expires: new Date(0), ...options });
+
+    return res
+      .status(200)
+      .clearCookie("accessToken", options)
+      .clearCookie("refreshToken", options)
+      .json({ message: "User logged out successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 const GOOGLE_CLIENT_ID =  process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
