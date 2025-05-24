@@ -29,7 +29,7 @@ ConnectToDataBase()
 
 app.use(cors({
     
-    origin: ["https://www.kodevortex.in" , "http://localhost:5173"],
+    origin: "https://www.kodevortex.in" ,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"], 
