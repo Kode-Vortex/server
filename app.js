@@ -5,6 +5,9 @@ import userRouter from "./routers/user.router.js"
 import otpRouter from "./routers/otp.router.js"
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
+
+import PaymentRouter from "./routers/paymentRoutes.js"
+
 const app = express();
 dotenv.config({
     path: "./.env"
@@ -39,7 +42,9 @@ app.use(express.urlencoded({extended:true , limit:"30kb"}))
 app.use(bodyParser.json())
 
 
+
 app.use("/" , userRouter)
 app.use("/" , otpRouter)
+app.use("/" , PaymentRouter)
 
 export default app;

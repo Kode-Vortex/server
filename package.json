@@ -4,9 +4,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "node app.js",
-  "start": "node app.js",
-  "vercel-start": "node app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "vercel-start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,13 +19,16 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.4.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "googleapis": "^144.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.10.0",
-    "nodemailer": "^6.10.0",
-    "nodemon": "^3.1.9"
+    "mongoose": "^8.15.0",
+    "nodemailer": "^6.10.1",
+    "nodemon": "^3.1.9",
+    "razorpay": "^2.9.6",
+    "server": "file:"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.8"
