@@ -2,6 +2,7 @@ import express from "express";
 import Razorpay from "razorpay";
 import Payment from "../models/Payment.js"
 const router = express.Router();
+import Workshop from "../models/Workshop.js";
 
 
 const razorpay = new Razorpay({
@@ -12,7 +13,6 @@ const razorpay = new Razorpay({
 
 
 router.post("/create-order", async (req,res) => {
-    console.log(req.body);
     
     const { fullName , whatsappPhone,email,year,collegeName,stream, workshopSelection } = req.body.formData;
     const {amount} = req.body;
@@ -61,6 +61,22 @@ router.post("/update-status", async (req,res) => {
     const {fullName , whatsappPhone,email,year,collegeName,stream, workshopSelection,
     amount} = paymentData;
 
+        const workshop = await Workshop.findOne({ name: workshopSelection });
+
+        console.log("wewew" , workshop);
+        
+
+    if (!workshop) {
+      return res.status(404).json({ success: false, message: "Workshop not found" });
+    }
+
+    if (workshop.availableSeats <= 0) {
+      return res.status(400).json({ success: false, message: "No seats available" });
+    }
+
+    workshop.availableSeats -= 1;
+    await workshop.save();
+
      const newPayment = new Payment({
       fullName , whatsappPhone,email,year,collegeName,stream, workshopSelection,
       amount,
@@ -81,6 +97,16 @@ router.post("/update-status", async (req,res) => {
     res.json({ success: true, message: "Payment updated" });
   } catch (error) {
     res.status(500).json({ success: false, message: "Update failed" });
+  }
+});
+
+router.get("/seats", async (req, res) => {
+  try {
+    const workshops = await Workshop.find({});
+    res.status(200).json(workshops);
+  } catch (error) {
+    console.error("Failed to fetch workshops:", error);
+    res.status(500).json({ message: "Server error while fetching seat data." });
   }
 });
 
