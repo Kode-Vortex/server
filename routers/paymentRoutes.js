@@ -20,7 +20,7 @@ router.post("/create-order", async (req,res) => {
     
 
   if (!fullName || !whatsappPhone || !email || !year || !collegeName || !stream || !workshopSelection || !amount)
-    return res.status(400).json({ success: false, message: "Missing fields" });
+    return res.status(201).json({ success: false, message: "Missing fields" });
 
   try {
     const options = {
