@@ -13,7 +13,7 @@ const razorpay = new Razorpay({
 
 
 router.post("/create-order", async (req,res) => {
-    
+  
     const { fullName , whatsappPhone,email,year,collegeName,stream, workshopSelection } = req.body.formData;
     const {amount} = req.body;
     console.log(fullName , whatsappPhone,email,year,collegeName,stream, workshopSelection , amount);
